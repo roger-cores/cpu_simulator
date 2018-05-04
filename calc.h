@@ -23,9 +23,8 @@ typedef struct s_instruction_sequence {
 	enum REL rel;
 	char* label;
 	char* target_label;
-	struct s_instruction_sequence* next;
 }t_instr_seq;
 
-t_instr_seq* instr_head;
-t_instr_seq* current;
+t_instr_seq** instr_head;
+int current_instr_head;
 int program_size;

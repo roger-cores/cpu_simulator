@@ -42,18 +42,21 @@ comment		";".*"\n"
 				}
 {register}			{
 					yylval.reg_val = (t_register*) malloc(sizeof(t_register));  
-					yylval.reg_val->number=atoi(yytext+1);
+					yylval.reg_val->number = atoi(yytext+1);
 					yylval.reg_val->name = (char*) malloc(strlen(yytext));
+					yylval.reg_val->value = 0;
 					strcpy(yylval.reg_val->name,yytext);
 					return(T_REG);
 				}
 {comment}			{/** Ignore comments **/}
 [A-Za-z]+[_A-Za-z0-9]*:		{
 					yytext[strlen(yytext)-1] = '\0';
+					yylval.label_val = (char*) malloc(strlen(yytext));
 					strcpy(yylval.label_val,yytext);
 					return(T_LBL);
 				}
 [A-Za-z]+[_A-Za-z0-9]*		{
+					yylval.label_val = (char*) malloc(strlen(yytext));
 					strcpy(yylval.label_val,yytext);
 					return(T_TLBL);
 				}
