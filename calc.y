@@ -220,12 +220,8 @@ void initializeRegisters(int size){
 		current->number = i;
 		current->name = (char*) malloc(5);
 		sprintf(current->name, "r%d", i);
-	}	
-	instr_head = NULL;
-	current_instr_head = 0;
-	program_size = 0;
+	}
 	instr_head = (t_instr_seq**) malloc(sizeof(t_instr_seq*));
-	
 }
 
 
